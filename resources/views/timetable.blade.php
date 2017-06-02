@@ -13,30 +13,32 @@
 			@endforeach
 		</ul>
 	@endif
-	<table class="timetable table table-striped">
-		<thead>
-		<tr>
-			<th>Godzina</th>
-			<th>Dzień powszedni</th>
-			<th>Soboty</th>
-			<th>Święta</th>
-		</tr>
-		</thead>
-		<tbody>
-		@for($i = 0; $i < 24; $i++)
+	@if (isset($timetable))
+		<table class="timetable table table-striped">
+			<thead>
 			<tr>
-				<td>{{ $i }}</td>
-				@foreach($day_types as $day_type)
-					<td>
-						@if (isset($timetable[$day_type][$i]))
-							@foreach ($timetable[$day_type][$i] as $item)
-								<span>{{ explode(':', $item->depart_at)[1] }}</span>
-							@endforeach
-						@endif
-					</td>
-				@endforeach
+				<th>Godzina</th>
+				<th>Dzień powszedni</th>
+				<th>Soboty</th>
+				<th>Święta</th>
 			</tr>
-		@endfor
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+			@for($i = 0; $i < 24; $i++)
+				<tr>
+					<td>{{ $i }}</td>
+					@foreach($day_types as $day_type)
+						<td>
+							@if (isset($timetable[$day_type][$i]))
+								@foreach ($timetable[$day_type][$i] as $item)
+									<span>{{ explode(':', $item->depart_at)[1] }}</span>
+								@endforeach
+							@endif
+						</td>
+					@endforeach
+				</tr>
+			@endfor
+			</tbody>
+		</table>
+	@endif
 @stop

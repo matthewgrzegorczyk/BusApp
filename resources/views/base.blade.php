@@ -31,7 +31,7 @@
 </div>
 
 @include('partials/footer')
-@include('partials/login-modal')
+{{--@include('partials/login-modal')--}}
 
 <script src="/js/app.js"></script>
 </body>

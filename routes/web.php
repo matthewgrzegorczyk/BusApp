@@ -11,7 +11,7 @@
 	|
 	*/
 
-	Route::group( [], function ( $router ) {
+	Route::group( [ 'middleware' => 'auth' ], function ( $router ) {
 		$router->get( '/', 'HomeController@index' )->name( 'home' );
 		$router->get( '/about', 'HomeController@about' )->name( 'about' );
 		$router->get( '/timetables', 'HomeController@timetables' )->name( 'timetable' );
@@ -20,6 +20,4 @@
 		$router->get( '/contact', 'HomeController@contact' )->name( 'contact' );
 	} );
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+	Auth::routes();
