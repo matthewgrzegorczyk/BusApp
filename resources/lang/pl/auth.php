@@ -13,26 +13,26 @@
 		|
 		*/
 
-		'failed'          => 'These credentials do not match our records.',
-		'throttle'        => 'Too many login attempts. Please try again in :seconds seconds.',
+		'failed'          => 'Niestety nie znależliśmy użytkownika o podanych danych logowania.',
+		'throttle'        => 'Zbyt wiele prób logowania. Spróbuj za :seconds sekund.',
 
 		// Custom
 		'headings'        => [
-			'login'    => 'Login',
-			'register' => 'Register',
+			'login'    => 'Logowanie',
+			'register' => 'Rejestracja',
 		],
 		'labels'          => [
-			'name'             => 'Name',
-			'email'            => 'E-Mail Address',
-			'password'         => 'Password',
-			'confirm_password' => 'Confirm Password',
+			'name'             => 'Nazwa użytkownika',
+			'email'            => 'Adres email',
+			'password'         => 'Hasło',
+			'confirm_password' => 'Potwierdź hasło',
 		],
-		'remember_me'     => 'Remember Me',
+		'remember_me'     => 'Zapamiętaj',
 		'buttons'         => [
-			'login'    => 'Login',
-			'register' => 'Register',
+			'login'    => 'Zaloguj',
+			'register' => 'Zarejestruj',
 		],
-		'forgot_password' => 'Forgot Your Password?',
+		'forgot_password' => 'Zapomniałeś hasło?',
 
 
 	];
