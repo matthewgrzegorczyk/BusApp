@@ -9,16 +9,19 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse">
 			<ul id="mainMenu" class="nav navbar-nav">
-				<li><a href="{{ route('home') }}">{{ __('nav.home') }} <span class="sr-only">(current)</span></a></li>
-				<li><a href="{{ route('about') }}">{{ __('nav.about') }}</a></li>
-				<li><a href="{{ route('timetable') }}">{{ __('nav.timetable') }}</a></li>
-				<li><a href="{{ route('contact') }}">{{ __('nav.contact') }}</a></li>
+				@foreach ($menu as $menu_item)
+					<li @if(Route::currentRouteName() == $menu_item)class="active"@endif><a href="{{ route($menu_item) }}">{{ __('nav.' . $menu_item) }}</a></li>
+				@endforeach
+				{{--<li @if(Route::currentRouteName() == 'home')class="active"@endif><a href="{{ route('home') }}">{{ __('nav.home') }} <span class="sr-only">(current)</span></a></li>--}}
+				{{--<li><a href="{{ route('about') }}">{{ __('nav.about') }}</a></li>--}}
+				{{--<li><a href="{{ route('timetable') }}">{{ __('nav.timetable') }}</a></li>--}}
+				{{--<li><a href="{{ route('contact') }}">{{ __('nav.contact') }}</a></li>--}}
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<!-- Authentication Links -->
 				@if (Auth::guest())
-					<li><a href="{{ route('login') }}">{{ __('auth.headings.login') }}</a></li>
-					<li><a href="{{ route('register') }}">{{ __('auth.headings.register') }}</a></li>
+					<li @if(Route::currentRouteName() == 'login')class="active"@endif><a href="{{ route('login') }}">{{ __('auth.headings.login') }}</a></li>
+					<li @if(Route::currentRouteName() == 'register')class="active"@endif><a href="{{ route('register') }}">{{ __('auth.headings.register') }}</a></li>
 				@else
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

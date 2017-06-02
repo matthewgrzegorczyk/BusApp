@@ -10,9 +10,6 @@
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<!-- Place favicon.ico in the root directory -->
 
-	{{--<link rel="stylesheet" href="css/bootstrap.css">--}}
-	{{--<link rel="stylesheet" href="css/bootstrap-theme.css">--}}
-	{{--<link rel="stylesheet" href="css/font-awesome.css">--}}
 	<link rel="stylesheet" href="/css/app.css">
 </head>
 <body>

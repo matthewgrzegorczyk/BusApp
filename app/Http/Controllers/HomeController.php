@@ -2,12 +2,18 @@
 
 	namespace App\Http\Controllers;
 
+	use Illuminate\Http\Request;
+
 	use App\Models\BusLine;
 	use App\Models\Timetable;
 
 	class HomeController extends Controller {
 
-		public function index() {
+		public function __construct(Request $request) {
+
+		}
+
+		public function index(Request $request) {
 			$data = [];
 
 			return view( 'index', $data );

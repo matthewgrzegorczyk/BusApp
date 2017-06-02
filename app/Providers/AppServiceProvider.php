@@ -13,7 +13,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+		$menu = [
+			'home',
+			'about',
+			'timetable',
+			'contact'
+		];
+
+		\Illuminate\Support\Facades\View::share('menu', $menu);
     }
 
     /**
