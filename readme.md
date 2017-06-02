@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## Project start up.
+## Project start up
 For development it's recommended to use Laravel Homestead virtual machine. If it's not an option, requirements are listed below.
 After downloading the project you should follow this steps to be able to run and develop the app.
 1. Run `composer install` to install all PHP dependencies.
