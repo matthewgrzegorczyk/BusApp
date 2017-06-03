@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-inverse">
 	<div class="container">
 		<div class="navbar-header">
             <span class="navbar-brand">

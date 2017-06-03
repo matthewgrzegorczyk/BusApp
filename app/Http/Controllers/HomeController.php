@@ -2,6 +2,7 @@
 
 	namespace App\Http\Controllers;
 
+	use Illuminate\Database\Eloquent\Collection;
 	use Illuminate\Http\Request;
 
 	use App\Models\BusLine;
@@ -9,11 +10,11 @@
 
 	class HomeController extends Controller {
 
-		public function __construct(Request $request) {
+		public function __construct( Request $request ) {
 
 		}
 
-		public function index(Request $request) {
+		public function index( Request $request ) {
 			$data = [];
 
 			return view( 'index', $data );
@@ -35,7 +36,7 @@
 		}
 
 		public function timetable( $bus_line ) {
-			$bus_lines = BusLine::all();
+			$bus_lines = BusLine::get();
 			$timetable = Timetable::where( 'bus_id', $bus_line )->orderBy( 'depart_at' )->get();
 			$day_types = Timetable::$allowed_day_types;
 
@@ -50,6 +51,7 @@
 
 			$data = [
 				'bus_lines' => $bus_lines,
+				'current_line' => $bus_line,
 				'timetable' => $timetable,
 				'day_types' => $day_types,
 			];
@@ -61,5 +63,13 @@
 			$data = [];
 
 			return view( 'contact', $data );
+		}
+
+		public function postContact( Request $request ) {
+			$rules = [
+				'email'   => 'required|email',
+				'content' => 'required',
+			];
+			$this->validate( $request, $rules );
 		}
 	}

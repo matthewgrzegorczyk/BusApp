@@ -4,7 +4,7 @@
 	@if (count($bus_lines) > 0)
 		<ul class="lines">
 			@foreach($bus_lines as $bus_line)
-				<li>
+				<li class="{{ isset($current_line) && $current_line == $bus_line->id ? 'active' : '' }}">
 					<a href="{{ route('bus_timetable', ['bus_line' => $bus_line->id]) }}"
 					   data-line="{{ $bus_line->id }}">
 						{{ $bus_line->id }}

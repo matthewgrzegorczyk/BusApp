@@ -10,6 +10,7 @@
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<!-- Place favicon.ico in the root directory -->
 
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=latin-ext" rel="stylesheet">
 	<link rel="stylesheet" href="/css/app.css">
 </head>
 <body>

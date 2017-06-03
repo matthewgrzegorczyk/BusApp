@@ -3,11 +3,45 @@ html {
 }
 body {
 	font-size: 1.6rem;
+	font-family: $primary-font-stack;
 }
 
+.navbar {
+	margin: 0;
+}
+.headerContainer {
+	/*background: url('https://static.pexels.com/photos/243753/pexels-photo-243753.jpeg') center center no-repeat;*/
+	background: url('https://static.pexels.com/photos/6604/public-transportation-tram-bus-seats.jpeg') center center no-repeat;
+	/*background: url('https://static.pexels.com/photos/205353/pexels-photo-205353.jpeg') center center no-repeat;*/
+	background-size: cover;
+	overflow: hidden;
+	height: 400px;
+}
+
+main {
+	padding: 2rem 0;
+}
+
+ul.lines {
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+}
 ul.lines li {
 	display: inline-block;
 	margin: 5px 5px 0 0;
+
+	a {
+		padding: 5px;
+		border-radius: 3px;
+		transition: 0.4s all ease-in-out;
+		background-color: transparent;
+		text-decoration: none;
+	}
+
+	&:hover a, &.active a {
+		background-color: #AFF;
+	}
 }
 
 .timetable tr td:nth-child(1) {
@@ -23,8 +57,7 @@ ul.lines li {
 /* Footer styles */
 footer {
 	border-top: 1px solid #d8d8d8;
-	margin-top: 15px;
-	padding-top: 15px;
+	padding-top: 1.5rem;
 }
 
 footer p {
