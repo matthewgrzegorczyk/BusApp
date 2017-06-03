@@ -17,10 +17,10 @@
 		<table class="timetable table table-striped">
 			<thead>
 			<tr>
-				<th>Godzina</th>
-				<th>Dzień powszedni</th>
-				<th>Soboty</th>
-				<th>Święta</th>
+				<th>{{ __('page.timetable.hour') }}</th>
+				<th>{{ __('page.timetable.day_type.workday') }}</th>
+				<th>{{ __('page.timetable.day_type.saturday') }}</th>
+				<th>{{ __('page.timetable.day_type.holiday') }}</th>
 			</tr>
 			</thead>
 			<tbody>

@@ -40,7 +40,8 @@ ul.lines li {
 	}
 
 	&:hover a, &.active a {
-		background-color: #AFF;
+		background-color: $brand-success;
+		color: #FFF;
 	}
 }
 
@@ -50,7 +51,7 @@ ul.lines li {
 .timetable tr td span {
 	margin-right: 4px;
 	padding: 2px;
-	background: #ffe7c6;
+	background: #ffe2be;
 	border-radius: 2px;
 }
 

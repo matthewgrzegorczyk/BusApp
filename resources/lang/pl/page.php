@@ -1,7 +1,15 @@
 <?php
 
 	return [
-		'contact' => [
+		'timetable' => [
+			'hour'     => 'Godzina',
+			'day_type' => [
+				'workday'  => 'Dzień powszedni',
+				'saturday' => 'Sobota',
+				'holiday'  => 'Święta',
+			],
+		],
+		'contact'   => [
 			'heading'      => 'Kontakt',
 			'placeholders' => [
 				'email'   => 'Adres email',
