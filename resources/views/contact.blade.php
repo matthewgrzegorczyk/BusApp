@@ -18,6 +18,12 @@
 			</div>
 			<input class="btn btn-primary" type="submit" value="{{ __('page.contact.submit') }}" />
 		</form>
+		<p class="text-center">
+		    Adres do korespondencji<br>
+		    MPK Escobar S.A<br>
+		    19-999 San Escobar, ul.Guantanamo 3.<br>
+		    Tel: (55) 123-321
+	    </p>
 	@else
 		{{ $message }}
 	@endif
