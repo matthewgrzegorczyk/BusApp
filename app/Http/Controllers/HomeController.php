@@ -2,11 +2,13 @@
 
 	namespace App\Http\Controllers;
 
+	use App\Mail\ContactEmailReceived;
 	use Illuminate\Database\Eloquent\Collection;
 	use Illuminate\Http\Request;
 
 	use App\Models\BusLine;
 	use App\Models\Timetable;
+	use Illuminate\Support\Facades\Mail;
 
 	class HomeController extends Controller {
 
@@ -50,10 +52,10 @@
 			}
 
 			$data = [
-				'bus_lines' => $bus_lines,
+				'bus_lines'    => $bus_lines,
 				'current_line' => $bus_line,
-				'timetable' => $timetable,
-				'day_types' => $day_types,
+				'timetable'    => $timetable,
+				'day_types'    => $day_types,
 			];
 
 			return view( 'timetable', $data );
@@ -71,5 +73,18 @@
 				'content' => 'required',
 			];
 			$this->validate( $request, $rules );
+
+			$data = [
+				'email'   => $request->get( 'email' ),
+				'content' => $request->get( 'content' ),
+			];
+			Mail::to( $request->get( 'email' ) )->send( new ContactEmailReceived( $data ) );
+
+
+			$successful = [
+				'message' => 'Twoja wiadomośc została poprawnie wysłana'
+			];
+
+			return view('contact', $successful);
 		}
 	}
