@@ -3,6 +3,7 @@
 	namespace App\Http\Controllers;
 
 	use App\Mail\ContactEmailReceived;
+	use App\Models\Reservation;
 	use Illuminate\Database\Eloquent\Collection;
 	use Illuminate\Http\Request;
 
@@ -61,6 +62,28 @@
 			return view( 'timetable', $data );
 		}
 
+		public function reserve( $bus_line ) {
+			$data = [
+				'ticket_types' => array_merge( [ '' => trans( 'page.reserve.placeholders.ticket_type' ) ], Reservation::$ticket_types ),
+			];
+
+			return view( 'reserve', $data );
+		}
+
+		public function postReserve( Request $request, $bus_line ) {
+			$rules = [
+				'amount'      => 'required|numeric',
+				'type'        => 'required',
+				'destination' => 'required',
+				'full_name'   => 'required',
+			];
+			$this->validate( $request, $rules );
+
+			var_dump( $request->all() );
+
+			return 'dsadas';
+		}
+
 		public function contact() {
 			$data = [];
 
@@ -82,9 +105,9 @@
 
 
 			$successful = [
-				'message' => 'Twoja wiadomośc została poprawnie wysłana'
+				'message' => 'Twoja wiadomośc została poprawnie wysłana',
 			];
 
-			return view('contact', $successful);
+			return view( 'contact', $successful );
 		}
 	}

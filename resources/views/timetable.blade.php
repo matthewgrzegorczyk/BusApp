@@ -5,7 +5,7 @@
 		<ul class="lines">
 			@foreach($bus_lines as $bus_line)
 				<li class="{{ isset($current_line) && $current_line == $bus_line->id ? 'active' : '' }}">
-					<a href="{{ route('bus_timetable', ['bus_line' => $bus_line->id]) }}"
+					<a href="{{ route('bus-timetable', ['bus_line' => $bus_line->id]) }}"
 					   data-line="{{ $bus_line->id }}">
 						{{ $bus_line->id }}
 					</a>
@@ -31,7 +31,7 @@
 						<td>
 							@if (isset($timetable[$day_type][$i]))
 								@foreach ($timetable[$day_type][$i] as $item)
-									<span>{{ explode(':', $item->depart_at)[1] }}</span>
+									<span><a href="{{ route('reserve', ['bus_line' => $item->bus_id]) }}">{{ explode(':', $item->depart_at)[1] }}</a></span>
 								@endforeach
 							@endif
 						</td>

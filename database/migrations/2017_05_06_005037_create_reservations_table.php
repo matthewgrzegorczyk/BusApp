@@ -21,6 +21,7 @@ class CreateReservationsTable extends Migration
 			$table->string('ticket_type');
 			$table->string('destination', 255);
 			$table->string('full_name', 100);
+			$table->dateTime('date')->default(\Carbon\Carbon::now());
 
 			// Foreign keys.
 			$table->unsignedInteger('user_id');

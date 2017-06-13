@@ -10,7 +10,8 @@
 		<div class="collapse navbar-collapse">
 			<ul id="mainMenu" class="nav navbar-nav">
 				@foreach ($menu as $menu_item)
-					<li @if(Route::currentRouteName() == $menu_item)class="active"@endif><a href="{{ route($menu_item) }}">{{ __('nav.' . $menu_item) }}</a></li>
+					<li @if(Route::currentRouteName() == $menu_item)class="active"@endif>
+						<a href="{{ route($menu_item) }}">{{ __('nav.' . $menu_item) }}</a></li>
 				@endforeach
 				{{--<li @if(Route::currentRouteName() == 'home')class="active"@endif><a href="{{ route('home') }}">{{ __('nav.home') }} <span class="sr-only">(current)</span></a></li>--}}
 				{{--<li><a href="{{ route('about') }}">{{ __('nav.about') }}</a></li>--}}
@@ -20,8 +21,10 @@
 			<ul class="nav navbar-nav navbar-right">
 				<!-- Authentication Links -->
 				@if (Auth::guest())
-					<li @if(Route::currentRouteName() == 'login')class="active"@endif><a href="{{ route('login') }}">{{ __('auth.headings.login') }}</a></li>
-					<li @if(Route::currentRouteName() == 'register')class="active"@endif><a href="{{ route('register') }}">{{ __('auth.headings.register') }}</a></li>
+					<li @if(Route::currentRouteName() == 'login')class="active"@endif>
+						<a href="{{ route('login') }}">{{ __('auth.headings.login') }}</a></li>
+					<li @if(Route::currentRouteName() == 'register')class="active"@endif>
+						<a href="{{ route('register') }}">{{ __('auth.headings.register') }}</a></li>
 				@else
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -29,14 +32,17 @@
 						</a>
 
 						<ul class="dropdown-menu" role="menu">
+							<li><a href="{{ route('admin-index') }}">Admin</a></li>
 							<li>
 								<a href="{{ route('logout') }}"
 								   onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
 									Logout
 								</a>
-
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+								<form id="logout-form"
+									  action="{{ route('logout') }}"
+									  method="POST"
+									  style="display: none;">
 									{{ csrf_field() }}
 								</form>
 							</li>

@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Models;
+	namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+	use Illuminate\Database\Eloquent\Model;
 
-class Reservation extends Model
-{
-    public function user() {
-    	return $this->hasOne(User::class);
+	class Reservation extends Model {
+		static public $ticket_types = [
+			'half_fare' => 'Ulgowy',
+			'normal'    => 'Normalny',
+		];
+
+		public function user() {
+			return $this->hasOne( User::class );
+		}
 	}
-}

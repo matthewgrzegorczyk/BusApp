@@ -2,7 +2,7 @@
 @section('main')
 	<h1>{{ __('page.contact.heading') }}</h1>
 	@if (!isset($message))
-		<form action="" method="post">
+		<form action="{{ route('post-contact') }}" method="post">
 			{{ csrf_field() }}
 			<div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
 				<input class="form-control"

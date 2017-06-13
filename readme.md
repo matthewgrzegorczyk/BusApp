@@ -24,3 +24,12 @@ After downloading the project you should follow this steps to be able to run and
 - Mbstring PHP Extension
 - Tokenizer PHP Extension
 - XML PHP Extension
+
+
+### Strona linii autobusowych;
+Aplikacja realizująca system internetowej rezerwacji określonych biletów. Powinna zapewniać co najmniej następujące funkcjonalności:
+-	możliwość dokonania rezerwacji biletów poprzez wypełnienie pól formularza;
+-	formularz rezerwacji powinien zawierać pola np. liczba biletów, kategoria (pospieszny, normalny), cel przejazdu, data, godzina, imię, nazwisko rezerwującego;
+-	aplikacja powinna sprawdzać, czy złożona rezerwacja może być zrealizowana (tzn. czy istnieją odpowiednie zasoby);
+-	łatwe dostosowanie kolorystyki aplikacji do całej strony (np. poprzez zgrupowanie parametrów określających wszystkie używane w aplikacji kolory w osobnym bloku kodu);
+-	panel administracyjny (dostępny po zalogowaniu) powinien pozwolić na wprowadzenie informacji o dostępnych zasobach oraz kasowanie i edycję dokonanej rezerwacji.
