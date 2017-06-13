@@ -26,13 +26,30 @@
 
 		public function editReservation(Reservation $reservation) {
 			$data = [
-				'reservation' => $reservation,
-				'ticket_types' => Reservation::$ticket_types,
+				'reservation'	=> $reservation,
+				'ticket_types'	=> Reservation::$ticket_types,
 			];
 			return view('admin/reservations/edit', $data);
 		}
 
 		public function saveReservation(Request $request, Reservation $reservation) {
+
+			$rules = [
+				'amount'      => 'required|numeric',
+				'type'        => 'required',
+				'destination' => 'required',
+				'full_name'   => 'required',
+			];
+			$this->validate( $request, $rules );
+
+			$fields                      = $request->all();
+			$reservation->tickets_amount = $fields[ 'amount' ];
+			$reservation->ticket_type    = $fields[ 'type' ];
+			$reservation->destination    = $fields[ 'destination' ];
+			$reservation->full_name      = $fields[ 'full_name' ];
+			$status = $reservation->save();
+			return ($status) ? redirect(route('admin-reservations')) : back();
+
 
 		}
 
