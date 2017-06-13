@@ -18,7 +18,7 @@
 				<td>{{ $reservation->getTicketType() }}</td>
 				<td>{{ $reservation->destination }}</td>
 				<td>{{ $reservation->full_name }}</td>
-				<td>{{ $reservation->busLine->journey_name ?? 'Brak' }}</td>
+				<td>{{ $reservation->busLine ? '(' . $reservation->busLine->id . ') ' . $reservation->busLine->name : 'Brak'}}</td>
 			</tr>
 		@empty
 			<tr>

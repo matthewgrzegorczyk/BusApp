@@ -3,7 +3,7 @@
 @section('main')
 	<h1>{{ __('page.reserve.heading') }}</h1>
 	@if (!isset($message))
-		<form action="{{ route('post-reserve', ['bus_line' => 1]) }}" method="post">
+		<form action="{{ route('post-reserve', ['bus_line' => $bus_line]) }}" method="post">
 			{{ csrf_field() }}
 			<div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
 				<input class="form-control"

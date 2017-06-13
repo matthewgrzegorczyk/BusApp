@@ -32,7 +32,7 @@
 						</a>
 
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="{{ route('admin-index') }}">Admin</a></li>
+							@if(!Auth::guest() && Auth::user()->name === 'admin')<li><a href="{{ route('admin-index') }}">Admin</a></li>@endif
 							<li><a href="{{ route('my-reservations') }}">Moje rezerwacje</a></li>
 							<li>
 								<a href="{{ route('logout') }}"
