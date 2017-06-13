@@ -62,15 +62,16 @@
 			return view( 'timetable', $data );
 		}
 
-		public function reserve( $bus_line ) {
+		public function reserve( BusLine $bus_line ) {
 			$data = [
 				'ticket_types' => array_merge( [ '' => trans( 'page.reserve.placeholders.ticket_type' ) ], Reservation::$ticket_types ),
+				'bus_line'     => $bus_line->id,
 			];
 
 			return view( 'reserve', $data );
 		}
 
-		public function postReserve( Request $request, $bus_line ) {
+		public function postReserve( Request $request, BusLine $bus_line ) {
 			$rules = [
 				'amount'      => 'required|numeric',
 				'type'        => 'required',
@@ -79,9 +80,18 @@
 			];
 			$this->validate( $request, $rules );
 
-			var_dump( $request->all() );
+			$fields                      = $request->all();
+			$reservation                 = new Reservation;
+			$reservation->tickets_amount = $fields[ 'amount' ];
+			$reservation->ticket_type    = $fields[ 'type' ];
+			$reservation->destination    = $fields[ 'destination' ];
+			$reservation->full_name      = $fields[ 'full_name' ];
 
-			return 'dsadas';
+			$user                 = $request->user();
+			$reservation->user_id = ( $user !== null ) ? $user->id : null;
+			$status = $reservation->save();
+
+			return ($status) ? redirect(route('admin-reservations')) : back();
 		}
 
 		public function contact() {

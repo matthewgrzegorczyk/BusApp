@@ -16,6 +16,7 @@ class CreateReservationsTable extends Migration
     public function up()
     {
         Schema::create($this->table_name, function (Blueprint $table) {
+        	$table->increments('id');
         	$table->timestamps();
 			$table->integer('tickets_amount');
 			$table->string('ticket_type');
@@ -24,7 +25,7 @@ class CreateReservationsTable extends Migration
 			$table->dateTime('date')->default(\Carbon\Carbon::now());
 
 			// Foreign keys.
-			$table->unsignedInteger('user_id');
+			$table->unsignedInteger('user_id')->nullable();
 		});
     }
 

@@ -13,4 +13,8 @@
 		public function user() {
 			return $this->hasOne( User::class );
 		}
+
+		public function getTicketType() {
+			return self::$ticket_types[$this->ticket_type] ?? '';
+		}
 	}

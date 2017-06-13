@@ -1,5 +1,5 @@
 @extends('admin/base')
 
 @section('content')
-	<p>Test</p>
+	<h2>Panel administracyjny HEHEHEHE.</h2>
 @endsection

@@ -42,6 +42,9 @@
 		$router->get( '/timetables/{id}/delete', 'AdminController@deleteTimetable')->name('admin-timetable-delete');
 
 		$router->get('/reservations', 'AdminController@reservations')->name('admin-reservations');
+		$router->get('/reservations/{reservation}/edit', 'AdminController@editReservation')->name('admin-reservation-edit');
+		$router->post('/reservations/{reservation}/edit', 'AdminController@saveReservation')->name('admin-reservation-save');
+		$router->get('/reservations/{reservation}/delete', 'AdminController@deleteReservation')->name('admin-reservation-delete');
 	} );
 
 	Auth::routes();

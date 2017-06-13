@@ -23,4 +23,20 @@
 
 			return view('admin.reservations.index', $data);
 		}
+
+		public function editReservation(Reservation $reservation) {
+			$data = [
+				'reservation' => $reservation,
+				'ticket_types' => Reservation::$ticket_types,
+			];
+			return view('admin/reservations/edit', $data);
+		}
+
+		public function saveReservation(Request $request, Reservation $reservation) {
+
+		}
+
+		public function deleteReservation(Reservation $reservation) {
+
+		}
 	}

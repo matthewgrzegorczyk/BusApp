@@ -17,4 +17,7 @@
 			],
 			'submit'       => 'Wyślij',
 		],
+		'404' => [
+			'not_found' => 'Nie możemy znaleźć tego czego szukasz. <br />Zapewne szukasz szczęścia. Tu go nie znajdziesz.',
+		]
 	];

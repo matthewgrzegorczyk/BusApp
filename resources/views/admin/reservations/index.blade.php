@@ -9,15 +9,17 @@
 				<th>Destination</th>
 				<th>Full Name</th>
 				<th>User</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		@forelse ($reservations as $reservation)
 			<tr>
 				<td>{{ $reservation->tickets_amount }}</td>
-				<td>{{ $reservation->ticket_type }}</td>
+				<td>{{ $reservation->getTicketType() }}</td>
 				<td>{{ $reservation->destination }}</td>
 				<td>{{ $reservation->full_name }}</td>
 				<td>{{ $reservation->user_id }}</td>
+				<td><a href="{{ route('admin-reservation-edit', ['reservation' => $reservation->id]) }}"><span class="glyphicon glyphicon-pencil"></span></a></td>
 			</tr>
 		@empty
 			<tr>
