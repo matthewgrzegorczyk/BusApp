@@ -21,6 +21,10 @@ class CreateBusLinesTable extends Migration
 			$table->string('name', 100);
 			$table->string('journey_name', 100);
 		});
+
+		Schema::table('reservations', function (Blueprint $table) {
+			$table->foreign('bus_id')->references('id')->on('bus_lines');
+		});
     }
 
     /**
@@ -30,6 +34,9 @@ class CreateBusLinesTable extends Migration
      */
     public function down()
     {
+    	Schema::table('reservations', function (Blueprint $table) {
+    		$table->dropForeign(['bus_id']);
+		});
 		Schema::dropIfExists($this->table_name);
     }
 }
