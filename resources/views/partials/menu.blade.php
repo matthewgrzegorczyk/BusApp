@@ -37,7 +37,7 @@
 								<a href="{{ route('logout') }}"
 								   onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-									Logout
+									{{ trans('auth.labels.logout') }}
 								</a>
 								<form id="logout-form"
 									  action="{{ route('logout') }}"

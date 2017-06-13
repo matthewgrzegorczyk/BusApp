@@ -26,6 +26,9 @@ class CreateReservationsTable extends Migration
 
 			// Foreign keys.
 			$table->unsignedInteger('user_id')->nullable();
+			$table->unsignedInteger('bus_id')->nullable();
+
+			$table->foreign('user_id')->references('id')->on('users');
 		});
     }
 
@@ -36,6 +39,9 @@ class CreateReservationsTable extends Migration
      */
     public function down()
     {
+    	Schema::table($this->table_name, function (Blueprint $table) {
+    		$table->dropForeign(['user_id']);
+		});
         Schema::dropIfExists($this->table_name);
     }
 }
