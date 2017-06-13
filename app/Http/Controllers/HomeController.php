@@ -86,12 +86,13 @@
 			$reservation->ticket_type    = $fields[ 'type' ];
 			$reservation->destination    = $fields[ 'destination' ];
 			$reservation->full_name      = $fields[ 'full_name' ];
+			$reservation->bus_id         = $bus_line->id;
 
 			$user                 = $request->user();
 			$reservation->user_id = ( $user !== null ) ? $user->id : null;
-			$status = $reservation->save();
+			$status               = $reservation->save();
 
-			return ($status) ? redirect(route('admin-reservations')) : back();
+			return ( $status ) ? redirect( route( 'my-reservations' ) ) : back();
 		}
 
 		public function contact() {
@@ -119,5 +120,17 @@
 			];
 
 			return view( 'contact', $successful );
+		}
+
+
+		public function myReservations( Request $request ) {
+			$user         = $request->user();
+			$reservations = Reservation::where( 'user_id', $user->id )->get();
+
+			$data = [
+				'reservations' => $reservations,
+			];
+
+			return view( 'my-reservations', $data );
 		}
 	}

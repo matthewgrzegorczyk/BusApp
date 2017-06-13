@@ -17,18 +17,21 @@
 			],
 			'submit'       => 'Wyślij',
 		],
-		'404' => [
+		'404'       => [
 			'not_found' => 'Nie możemy znaleźć tego czego szukasz. <br />Zapewne szukasz szczęścia. Tu go nie znajdziesz.',
 		],
-		'reserve' => [
-		'heading' => 'Rezerwacja',
+		'reserve'   => [
+			'heading'      => 'Rezerwacja',
 			'placeholders' => [
 				'tickets_amount' => 'Ilość biletów',
-				'ticket_type' => 'Rodzaj biletu(ów)',
-				'destination' => 'Cel podróży',
-				'full_name' => 'Imie i nazwisko',
+				'ticket_type'    => 'Rodzaj biletu(ów)',
+				'destination'    => 'Cel podróży',
+				'full_name'      => 'Imie i nazwisko',
 
 			],
-			'submit' => 'Potwierdź',
+			'submit'       => 'Potwierdź',
 		],
+		'my_reservations' => [
+			'heading' => 'Moje rezerwacje',
+		]
 	];

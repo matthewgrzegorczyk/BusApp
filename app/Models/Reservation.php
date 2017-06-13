@@ -11,10 +11,14 @@
 		];
 
 		public function user() {
-			return $this->hasOne( User::class );
+			return $this->belongsTo( User::class );
 		}
 
 		public function getTicketType() {
-			return self::$ticket_types[$this->ticket_type] ?? '';
+			return self::$ticket_types[ $this->ticket_type ] ?? '';
+		}
+
+		public function busLine() {
+			return $this->belongsTo( BusLine::class, 'bus_id' );
 		}
 	}

@@ -33,6 +33,7 @@
 
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="{{ route('admin-index') }}">Admin</a></li>
+							<li><a href="{{ route('my-reservations') }}">Moje rezerwacje</a></li>
 							<li>
 								<a href="{{ route('logout') }}"
 								   onclick="event.preventDefault();

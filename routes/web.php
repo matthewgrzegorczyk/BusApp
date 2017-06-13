@@ -10,18 +10,22 @@
 	| contains the "web" middleware group. Now create something great!
 	|
 	*/
-	$home_settings  = [
+	$home_settings       = [
 //		'middleware' => 'auth',
 	];
-	$admin_settings = [
+	$my_account_settings = [
+		'middleware' => 'auth',
+		'prefix'     => 'account',
+	];
+	$admin_settings      = [
 //		'middleware' => 'auth',
 		'prefix' => 'admin',
 	];
 
 	Route::group( $home_settings, function ( $router ) {
-		$router->get('/phpinfo', function() {
+		$router->get( '/phpinfo', function () {
 			phpinfo();
-		});
+		} );
 		$router->get( '/', 'HomeController@index' )->name( 'home' );
 		$router->get( '/about', 'HomeController@about' )->name( 'about' );
 		$router->get( '/timetables', 'HomeController@timetables' )->name( 'timetable' );
@@ -35,19 +39,23 @@
 		$router->post( '/contact', 'HomeController@postContact' )->name( 'post-contact' );
 	} );
 
+	Route::group( $my_account_settings, function ( $router ) {
+		$router->get( '/reservations', 'HomeController@myReservations' )->name( 'my-reservations' );
+	} );
+
 	Route::group( $admin_settings, function ( $router ) {
 		$router->get( '/', 'AdminController@index' )->name( 'admin-index' );
-		$router->get( '/timetables', 'AdminController@timetables')->name('admin-timetable');
-		$router->get( '/timetables/create', 'AdminController@createTimetable')->name('admin-timetable-create');
-		$router->post( '/timetables/create', 'AdminController@postCreateTimetable')->name('admin-timetable-create');
-		$router->get( '/timetables/{id}', 'AdminController@editTimetable')->name('admin-timetable-edit');
-		$router->post( '/timetables/{id}', 'AdminController@postEditTimetable')->name('admin-timetable-edit');
-		$router->get( '/timetables/{id}/delete', 'AdminController@deleteTimetable')->name('admin-timetable-delete');
+//		$router->get( '/timetables', 'AdminController@timetables')->name('admin-timetable');
+//		$router->get( '/timetables/create', 'AdminController@createTimetable')->name('admin-timetable-create');
+//		$router->post( '/timetables/create', 'AdminController@postCreateTimetable')->name('admin-timetable-create');
+//		$router->get( '/timetables/{id}', 'AdminController@editTimetable')->name('admin-timetable-edit');
+//		$router->post( '/timetables/{id}', 'AdminController@postEditTimetable')->name('admin-timetable-edit');
+//		$router->get( '/timetables/{id}/delete', 'AdminController@deleteTimetable')->name('admin-timetable-delete');
 
-		$router->get('/reservations', 'AdminController@reservations')->name('admin-reservations');
-		$router->get('/reservations/{reservation}/edit', 'AdminController@editReservation')->name('admin-reservation-edit');
-		$router->post('/reservations/{reservation}/edit', 'AdminController@saveReservation')->name('admin-reservation-save');
-		$router->get('/reservations/{reservation}/delete', 'AdminController@deleteReservation')->name('admin-reservation-delete');
+		$router->get( '/reservations', 'AdminController@reservations' )->name( 'admin-reservations' );
+		$router->get( '/reservations/{reservation}/edit', 'AdminController@editReservation' )->name( 'admin-reservation-edit' );
+		$router->post( '/reservations/{reservation}/edit', 'AdminController@saveReservation' )->name( 'admin-reservation-save' );
+		$router->get( '/reservations/{reservation}/delete', 'AdminController@deleteReservation' )->name( 'admin-reservation-delete' );
 	} );
 
 	Auth::routes();
