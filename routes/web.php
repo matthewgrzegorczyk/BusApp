@@ -19,6 +19,9 @@
 	];
 
 	Route::group( $home_settings, function ( $router ) {
+		$router->get('/phpinfo', function() {
+			phpinfo();
+		});
 		$router->get( '/', 'HomeController@index' )->name( 'home' );
 		$router->get( '/about', 'HomeController@about' )->name( 'about' );
 		$router->get( '/timetables', 'HomeController@timetables' )->name( 'timetable' );

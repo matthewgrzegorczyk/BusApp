@@ -26,6 +26,7 @@
 			'email'            => 'Adres email',
 			'password'         => 'Hasło',
 			'confirm_password' => 'Potwierdź hasło',
+			'logout' => 'Wyloguj',
 		],
 		'remember_me'     => 'Zapamiętaj',
 		'buttons'         => [

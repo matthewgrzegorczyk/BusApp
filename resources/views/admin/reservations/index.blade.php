@@ -4,12 +4,12 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>Amount</th>
-				<th>Type</th>
-				<th>Destination</th>
-				<th>Full Name</th>
-				<th>User</th>
-				<th>Actions</th>
+				<th>Ilość</th>
+				<th>Typ</th>
+				<th>Cel</th>
+				<th>Imie i nazwisko</th>
+				<th>Użytkownik</th>
+				<th>Edytuj</th>
 			</tr>
 		</thead>
 		@forelse ($reservations as $reservation)
