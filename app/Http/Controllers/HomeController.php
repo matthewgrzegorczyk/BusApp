@@ -38,9 +38,9 @@
 			return view( 'timetable', $data );
 		}
 
-		public function timetable( $bus_line ) {
+		public function timetable( BusLine $bus_line ) {
 			$bus_lines = BusLine::get();
-			$timetable = Timetable::where( 'bus_id', $bus_line )->orderBy( 'depart_at' )->get();
+			$timetable = Timetable::where( 'bus_id', $bus_line->id )->orderBy( 'depart_at' )->get();
 			$day_types = Timetable::$allowed_day_types;
 
 			$timetable = $timetable->groupBy( 'day_type' );
@@ -65,7 +65,7 @@
 		public function reserve( BusLine $bus_line ) {
 			$data = [
 				'ticket_types' => array_merge( [ '' => trans( 'page.reserve.placeholders.ticket_type' ) ], Reservation::$ticket_types ),
-				'bus_line'     => $bus_line->id,
+				'bus_line'     => $bus_line,
 			];
 
 			return view( 'reserve', $data );
