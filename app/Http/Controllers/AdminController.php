@@ -54,6 +54,7 @@
 		}
 
 		public function deleteReservation(Reservation $reservation) {
-
+			$status = $reservation->delete();
+			return ($status) ? redirect(route('admin-reservations')) : back();
 		}
 	}
