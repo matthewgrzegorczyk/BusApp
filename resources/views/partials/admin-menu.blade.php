@@ -5,4 +5,7 @@
 	<li role="presentation" class="{{ (Route::currentRouteName() == 'admin-reservations') ? 'active' : '' }}">
 		<a href="{{ route('admin-reservations') }}">Rezerwacje</a>
 	</li>
+	<li role="presentation" class="{{ (Route::currentRouteName() == 'admin-drivers') ? 'active' : '' }}">
+		<a href="{{ route('admin-drivers') }}">Kierowcy</a>
+	</li>
 </ul>

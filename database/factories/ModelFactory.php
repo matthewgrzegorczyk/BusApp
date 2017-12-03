@@ -28,6 +28,7 @@
 		return [
 			'name'         => $faker->name,
 			'journey_name' => $faker->streetName,
+			'price'        => $faker->randomFloat( 2, 4, 20 ),
 		];
 
 	} );
@@ -37,5 +38,14 @@
 			'day_type'  => $faker->randomElement( App\Models\Timetable::$allowed_day_types ),
 			'depart_at' => $faker->dateTime->format( 'H:i' ),
 			'bus_id'    => $faker->numberBetween( 1, 30 ),
+		];
+	} );
+
+	$factory->define( \App\Models\Driver::class, function ( Faker\Generator $faker ) {
+		return [
+			'first_name' => $faker->firstName,
+			'last_name'  => $faker->lastName,
+			'jobs_taken' => $faker->numberBetween( 0, 200 ),
+			'status'     => '',
 		];
 	} );

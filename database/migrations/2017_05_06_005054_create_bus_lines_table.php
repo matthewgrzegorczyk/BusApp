@@ -20,6 +20,7 @@ class CreateBusLinesTable extends Migration
 			$table->increments('id');
 			$table->string('name', 100);
 			$table->string('journey_name', 100);
+			$table->float('price');
 		});
 
 		Schema::table('reservations', function (Blueprint $table) {

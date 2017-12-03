@@ -2,6 +2,7 @@
 
 	namespace App\Http\Controllers;
 
+	use App\Models\Driver;
 	use Illuminate\Http\Request;
 
 	use App\Models\BusLine;
@@ -21,24 +22,26 @@
 				'reservations' => Reservation::all(),
 			];
 
-			return view('admin.reservations.index', $data);
+			return view( 'admin.reservations.index', $data );
 		}
 
-		public function editReservation(Reservation $reservation) {
+		public function editReservation( Reservation $reservation ) {
 			$data = [
-				'reservation'	=> $reservation,
-				'ticket_types'	=> Reservation::$ticket_types,
+				'reservation'  => $reservation,
+				'ticket_types' => Reservation::$ticket_types,
 			];
-			return view('admin/reservations/edit', $data);
+
+			return view( 'admin/reservations/edit', $data );
 		}
 
-		public function saveReservation(Request $request, Reservation $reservation) {
+		public function saveReservation( Request $request, Reservation $reservation ) {
 
 			$rules = [
 				'amount'      => 'required|numeric',
 				'type'        => 'required',
 				'destination' => 'required',
 				'full_name'   => 'required',
+				'price'       => 'required',
 			];
 			$this->validate( $request, $rules );
 
@@ -47,14 +50,22 @@
 			$reservation->ticket_type    = $fields[ 'type' ];
 			$reservation->destination    = $fields[ 'destination' ];
 			$reservation->full_name      = $fields[ 'full_name' ];
-			$status = $reservation->save();
-			return ($status) ? redirect(route('admin-reservations')) : back();
+			$status                      = $reservation->save();
+
+			return ( $status ) ? redirect( route( 'admin-reservations' ) ) : back();
 
 
 		}
 
-		public function deleteReservation(Reservation $reservation) {
+		public function deleteReservation( Reservation $reservation ) {
 			$status = $reservation->delete();
-			return ($status) ? redirect(route('admin-reservations')) : back();
+
+			return ( $status ) ? redirect( route( 'admin-reservations' ) ) : back();
+		}
+
+		public function drivers() {
+			$data = [ 'drivers' => Driver::all() ];
+
+			return view( 'admin/drivers/index', $data );
 		}
 	}

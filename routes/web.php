@@ -56,6 +56,8 @@
 		$router->get( '/reservations/{reservation}/edit', 'AdminController@editReservation' )->name( 'admin-reservation-edit' );
 		$router->post( '/reservations/{reservation}/edit', 'AdminController@saveReservation' )->name( 'admin-reservation-save' );
 		$router->get( '/reservations/{reservation}/delete', 'AdminController@deleteReservation' )->name( 'admin-reservation-delete' );
+
+		$router->get( '/drivers', 'AdminController@drivers' )->name( 'admin-drivers' );
 	} );
 
 	Auth::routes();
