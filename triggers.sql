@@ -11,9 +11,15 @@ DELIMITER ;
 
 
 DELIMITER //
-  CREATE PROCEDURE p_increase_ticket_price (IN price INT, IN )
+  CREATE PROCEDURE p_increase_ticket_price (IN dPrice DOUBLE(8,2), IN bus_line INT)
     BEGIN
-      SELECT * FROM bus_lines;
-    END;
-  //
+      UPDATE
+        bus_lines
+      SET
+        bus_lines.price = bus_lines.price + dPrice
+      WHERE
+        bus_lines.id = bus_line
+    END //
 DELIMITER ;
+
+
