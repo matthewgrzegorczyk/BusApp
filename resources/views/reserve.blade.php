@@ -3,6 +3,7 @@
 @section('main')
 	<h1>{{ __('page.reserve.heading') }}</h1>
 	@if (!isset($message))
+		{{ $bus_line->journey_name }}
 		<h3>({{ $bus_line->id }}) {{ $bus_line->name }}</h3>
 		<form action="{{ route('post-reserve', ['bus_line' => $bus_line->id]) }}" method="post">
 			{{ csrf_field() }}
@@ -28,7 +29,10 @@
 				<input class="form-control"
 					   name="destination"
 					   type="text"
-					   placeholder="{{ __('page.reserve.placeholders.destination') }}" value="{{ old('destination') }}">
+					   placeholder="{{ __('page.reserve.placeholders.destination') }}"
+					   value="{{ old('destination', $bus_line->journey_name) }}"
+					   disabled="disabled"
+				/>
 				<span class="help-block">{{ $errors->first('destination') }}</span>
 			</div>
 			<div class="form-group">
