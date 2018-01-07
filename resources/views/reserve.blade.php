@@ -3,9 +3,11 @@
 @section('main')
 	<h1>{{ __('page.reserve.heading') }}</h1>
 	@if (!isset($message))
-		{{ $bus_line->journey_name }}
+		<strong>Miejsce docelowe:</strong> {{ $bus_line->journey_name }}<br />
+		<strong>Cena biletu:</strong> <span class="price">{{ $bus_line->price }} PLN</span><br />
+		<strong>Godzina:</strong> {{ $timetable->depart_at }}
 		<h3>({{ $bus_line->id }}) {{ $bus_line->name }}</h3>
-		<form action="{{ route('post-reserve', ['bus_line' => $bus_line->id]) }}" method="post">
+		<form action="{{ route('post-reserve', ['bus_line' => $bus_line->id, 'timetable' => $timetable->id]) }}" method="post">
 			{{ csrf_field() }}
 			<div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
 				<input class="form-control"
@@ -31,7 +33,7 @@
 					   type="text"
 					   placeholder="{{ __('page.reserve.placeholders.destination') }}"
 					   value="{{ old('destination', $bus_line->journey_name) }}"
-					   disabled="disabled"
+					   readonly="readonly" 
 				/>
 				<span class="help-block">{{ $errors->first('destination') }}</span>
 			</div>

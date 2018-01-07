@@ -40,7 +40,7 @@ CREATE PROCEDURE p_increase_ticket_price (IN dPrice DOUBLE(8,2), IN bus_line INT
       bus_lines.id = bus_line;
   END //
 DELIMITER ;
-
+#Podział kierowców na ilosc przerobionch tras
 SELECT
   d.first_name,
   d.last_name,
@@ -59,3 +59,7 @@ SELECT
   ) AS 'status'
 FROM
   drivers d;
+
+# Wykonanie procedury zwiekszania ceny biletów
+#USE busapp;
+#CALL p_increase_ticket_price(100, 10);

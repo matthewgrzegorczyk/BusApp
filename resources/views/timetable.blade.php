@@ -32,7 +32,7 @@
 						<td>
 							@if (isset($timetable[$day_type][$i]))
 								@foreach ($timetable[$day_type][$i] as $item)
-									<span><a href="{{ route('reserve', ['bus_line' => $item->bus_id]) }}">{{ explode(':', $item->depart_at)[1] }}</a></span>
+									<span><a href="{{ route('reserve', ['bus_line' => $item->bus_id, 'timetable' => $item->id]) }}">{{ explode(':', $item->depart_at)[1] }}</a></span>
 								@endforeach
 							@endif
 						</td>

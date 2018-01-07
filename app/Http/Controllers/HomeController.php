@@ -2,14 +2,17 @@
 
 	namespace App\Http\Controllers;
 
-	use App\Mail\ContactEmailReceived;
-	use App\Models\Reservation;
+	
 	use Illuminate\Database\Eloquent\Collection;
 	use Illuminate\Http\Request;
+	use Illuminate\Support\Facades\Mail;
 
+	use Carbon\Carbon;
+
+	use App\Mail\ContactEmailReceived;
+	use App\Models\Reservation;
 	use App\Models\BusLine;
 	use App\Models\Timetable;
-	use Illuminate\Support\Facades\Mail;
 
 	class HomeController extends Controller {
 
@@ -62,16 +65,17 @@
 			return view( 'timetable', $data );
 		}
 
-		public function reserve( BusLine $bus_line ) {
+		public function reserve( BusLine $bus_line, Timetable $timetable ) {
 			$data = [
 				'ticket_types' => array_merge( [ '' => trans( 'page.reserve.placeholders.ticket_type' ) ], Reservation::$ticket_types ),
 				'bus_line'     => $bus_line,
+				'timetable'    => $timetable
 			];
 
 			return view( 'reserve', $data );
 		}
 
-		public function postReserve( Request $request, BusLine $bus_line ) {
+		public function postReserve( Request $request, BusLine $bus_line, Timetable $timetable ) {
 			$rules = [
 				'amount'      => 'required|numeric',
 				'type'        => 'required',
@@ -87,6 +91,8 @@
 			$reservation->destination    = $fields[ 'destination' ];
 			$reservation->full_name      = $fields[ 'full_name' ];
 			$reservation->bus_id         = $bus_line->id;
+			$reservation->date           = Carbon::parse($timetable->depart_at)->format('Y-m-d H:i:s');
+			$reservation->timetable_id   = $timetable->id;
 
 			$user                 = $request->user();
 			$reservation->user_id = ( $user !== null ) ? $user->id : null;

@@ -31,9 +31,9 @@
 		$router->get( '/timetables', 'HomeController@timetables' )->name( 'timetable' );
 		$router->get( '/timetables/{bus_line}', 'HomeController@timetable' )
 			->where( [ 'bus_line' => '[0-9]+' ] )->name( 'bus-timetable' );
-		$router->get( '/timetables/{bus_line}/reserve', 'HomeController@reserve' )
+		$router->get( '/timetables/{bus_line}/reserve/{timetable}', 'HomeController@reserve' )
 			->where( [ 'bus_line' => '[0-9]+' ] )->name( 'reserve' );
-		$router->post( '/timetables/{bus_line}/reserve', 'HomeController@postReserve' )
+		$router->post( '/timetables/{bus_line}/reserve/{timetable}', 'HomeController@postReserve' )
 			->where( [ 'bus_line' => '[0-9]+' ] )->name( 'post-reserve' );
 		$router->get( '/contact', 'HomeController@contact' )->name( 'contact' );
 		$router->post( '/contact', 'HomeController@postContact' )->name( 'post-contact' );
