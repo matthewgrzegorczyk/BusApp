@@ -62,16 +62,18 @@
 	} );
 
 	$factory->define( App\Models\Reservation::class, function ( Faker\Generator $faker ) {
-		$bus_lines = \App\Models\BusLine::all()->pluck( 'id' )->toArray();
-		$users     = App\Models\User::all()->pluck( 'id' )->toArray();
+		$bus_lines  = \App\Models\BusLine::all()->pluck( 'id' )->toArray();
+		$users      = App\Models\User::all()->pluck( 'id' )->toArray();
+		$timetables = App\Models\Timetable::all()->pluck( 'id' )->toArray();
 
 		return [
 			'tickets_amount' => $faker->numberBetween( 1, 5 ),
 			'ticket_type'    => $faker->randomElement( array_keys( \App\Models\Reservation::$ticket_types ) ),
-			'destination'    => $faker->address,
+			'destination'    => $faker->city,
 			'full_name'      => $faker->firstName . ' ' . $faker->lastName,
 			'date'           => $faker->dateTimeBetween( '-1 year', 'now' ),
 			'user_id'        => $faker->randomElement( $users ),
 			'bus_id'         => $faker->randomElement( $bus_lines ),
+			'timetable_id'   => $faker->randomElement( $timetables ),
 		];
 	} );
